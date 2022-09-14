@@ -2,7 +2,7 @@ import { F } from "@mobily/ts-belt";
 import { Photo } from "pexels";
 import { pexelsClient } from "./pexels-client";
 import { store } from "./store";
-import { randomInt, takeRandom, takeRandomUntilSatisfied } from "./utils";
+import { randomInt, takeRandomUntilSatisfied } from "./utils";
 
 const PAGE_SIZE = 80; // This is the max allowed
 
@@ -13,7 +13,7 @@ const photoIsLandscape = (photo: Photo) => photo.width > photo.height;
 const photoIsValidWallpaper = F.both(photoIsLandscape, photoIsLargeEnough);
 
 export const fetchData = async () => {
-	const pageNumber = randomInt(1, 100);
+	const pageNumber = randomInt(1, 10);
 
 	const photosResult = await pexelsClient.photos.search({
 		query: "wallpaper",

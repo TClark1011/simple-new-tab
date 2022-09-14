@@ -1,4 +1,4 @@
-import { A, flow, O, pipe } from "@mobily/ts-belt";
+import { A, flow, N, O, pipe } from "@mobily/ts-belt";
 
 export const randomInt = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
@@ -9,3 +9,6 @@ export const takeRandomUntilSatisfied = <T>(
 	arr: T[],
 	predicate: (item: T) => boolean,
 ) => pipe(arr, A.shuffle, A.find(predicate), O.toUndefined);
+
+export const mean = (arr: number[]) =>
+	pipe(arr, A.reduce(0, N.add), N.divide(arr.length));

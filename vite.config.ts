@@ -2,8 +2,8 @@ import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import { crx } from "@crxjs/vite-plugin";
 import manifest from "./manifest.json";
-import replace from "@rollup/plugin-replace";
 import { replaceCodePlugin } from "vite-plugin-replace";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 export default defineConfig({
 	plugins: [
@@ -21,6 +21,7 @@ export default defineConfig({
 				},
 			],
 		}),
+		vanillaExtractPlugin(),
 	],
 	server: {
 		port: 3000,
