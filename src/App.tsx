@@ -1,20 +1,25 @@
-import { Component, onMount } from "solid-js";
+import {
+	Component,
+	createResource,
+	onMount,
+	createSignal,
+	createMemo,
+} from "solid-js";
 
 import { store } from "./store";
 import { fetchData } from "./fetch-data";
 
-const data = store.get();
-
-// if (!data) {
-// 	throw new Error("No data");
-// }
+const preloadedData = store.get();
 
 const App: Component = () => {
-	onMount(fetchData);
+	const [baseData] = createSignal(preloadedData);
+	const [fetchedData] = createResource("data", fetchData);
+
+	const dataToUse = createMemo(() => preloadedData ?? fetchedData());
 	return (
 		<div>
-			<p>Background URL: {data?.backgroundImageURL}</p>
-			<p>Color: {data?.mainColor}</p>
+			<p>Background URL: {dataToUse()?.backgroundImageURL}</p>
+			<p>Color: {dataToUse()?.mainColor}</p>
 		</div>
 	);
 };
