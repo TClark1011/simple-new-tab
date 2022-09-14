@@ -3,7 +3,7 @@ import { createVar, style } from "@vanilla-extract/css";
 import { themeVars } from "./styles/theme.css";
 import { mean } from "./utils";
 
-export const SHAPE_TOP_WIDTH_PERCENTAGE = 30;
+export const SHAPE_TOP_WIDTH_PERCENTAGE = 25;
 export const SHAPE_BOTTOM_WIDTH_PERCENTAGE = SHAPE_TOP_WIDTH_PERCENTAGE - 10;
 
 export const root = style({
@@ -11,6 +11,7 @@ export const root = style({
 	height: "100vh",
 	width: "100vw",
 	overflow: "hidden",
+	fontFamily: themeVars.font.heading,
 });
 
 export const bgImage = style({
