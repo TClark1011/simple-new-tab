@@ -1,27 +1,22 @@
-import type { Component } from 'solid-js';
+import { Component, onMount } from "solid-js";
 
-import logo from './logo.svg';
-import styles from './App.module.css';
+import { store } from "./store";
+import { fetchData } from "./fetch-data";
+
+const data = store.get();
+
+// if (!data) {
+// 	throw new Error("No data");
+// }
 
 const App: Component = () => {
-  return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-    </div>
-  );
+	onMount(fetchData);
+	return (
+		<div>
+			<p>Background URL: {data?.backgroundImageURL}</p>
+			<p>Color: {data?.mainColor}</p>
+		</div>
+	);
 };
 
 export default App;
