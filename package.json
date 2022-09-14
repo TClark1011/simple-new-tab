@@ -19,6 +19,7 @@
 		"vite-plugin-solid": "^2.3.0"
 	},
 	"dependencies": {
+		"@extend-chrome/storage": "^1.5.0",
 		"@mobily/ts-belt": "^3.13.1",
 		"@vanilla-extract/css": "^1.9.0",
 		"@vanilla-extract/css-utils": "^0.1.2",

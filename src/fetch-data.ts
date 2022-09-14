@@ -1,7 +1,7 @@
 import { F } from "@mobily/ts-belt";
 import { Photo } from "pexels";
 import { pexelsClient } from "./pexels-client";
-import { store } from "./store";
+import { wallpaperStore } from "./stores/wallpaper-store";
 import { randomInt, takeRandomUntilSatisfied } from "./utils";
 
 const PAGE_SIZE = 80; // This is the max allowed
@@ -38,7 +38,7 @@ export const fetchData = async () => {
 		backgroundImageURL: photo.src.original,
 		mainColor: photo.avg_color,
 	};
-	store.set(data);
+	wallpaperStore.set(data);
 
 	return data;
 };
