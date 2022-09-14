@@ -13,7 +13,7 @@ const photoIsLandscape = (photo: Photo) => photo.width > photo.height;
 const photoIsValidWallpaper = F.both(photoIsLandscape, photoIsLargeEnough);
 
 export const fetchData = async () => {
-	const pageNumber = randomInt(1, 10);
+	const pageNumber = randomInt(1, 2);
 
 	const photosResult = await pexelsClient.photos.search({
 		query: "wallpaper",
