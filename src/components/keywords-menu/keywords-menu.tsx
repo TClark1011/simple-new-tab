@@ -1,18 +1,40 @@
+import { F, flow, G, pipe } from "@mobily/ts-belt";
 import {
 	Component,
 	createEffect,
 	createResource,
+	createSignal,
 	For,
 	Match,
 	Switch,
 } from "solid-js";
-import { safeGetSettings, settingsStore } from "../../stores/settings-store";
+import {
+	applyAddKeyword,
+	applyKeywordDelete,
+	deleteKeyword,
+	postNewKeyword,
+	safeGetSettings,
+	settingsStore,
+} from "../../stores/settings-store";
+import { runIfParamIsDefined } from "../../utils";
 import * as styles from "./keywords-menu.css";
 
 settingsStore.get().then((data) => console.log("(keywords-menu) data: ", data));
 
 export const KeywordsMenu: Component = () => {
-	const [settings] = createResource(safeGetSettings);
+	const [settings, { mutate }] = createResource(safeGetSettings);
+	const [inputState, setInputState] = createSignal("");
+
+	const addKeyword = async () => {
+		mutate(runIfParamIsDefined(applyAddKeyword(inputState())));
+		setInputState("");
+		await postNewKeyword(inputState());
+	};
+
+	const handleDeleteKeyword = async (keyword: string) => {
+		mutate(runIfParamIsDefined(applyKeywordDelete(keyword)));
+		await deleteKeyword(keyword);
+	};
 
 	return (
 		<Switch>
@@ -27,14 +49,24 @@ export const KeywordsMenu: Component = () => {
 				{(keywords) => (
 					<div>
 						<ul>
-							<For
-								each={[...keywords.values()]}
-								fallback={<div>No Keywords</div>}
-							>
-								{(word) => <li>{word}</li>}
+							<For each={keywords} fallback={<div>No Keywords</div>}>
+								{(word) => (
+									<li>
+										<div>{word}</div>
+										<button onClick={[handleDeleteKeyword, word]}>
+											Delete
+										</button>
+									</li>
+								)}
 							</For>
 						</ul>
-						<input type="text" placeholder="Add New Keyword" />
+						<input
+							type="text"
+							onInput={(e) => setInputState(e.currentTarget.value ?? "")}
+							value={inputState()}
+							placeholder="Add New Keyword"
+						/>
+						<button onClick={addKeyword}>Add</button>
 					</div>
 				)}
 			</Match>
