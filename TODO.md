@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] Extension Icon  
 - [ ] Repo README  
 - [ ] Automate versioning  
 - [ ] Dark Mode  
