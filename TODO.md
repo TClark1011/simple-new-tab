@@ -9,13 +9,11 @@ Project Description
 - [ ] Extension Icon  
 - [ ] Repo README  
 - [ ] Automate versioning  
-- [ ] Dark Mode  
-- [ ] Validation on keyword input  
-- [ ] Add option for chance to not use keyword, configure the probablity  
 
 ### In Progress
 
 
 ### Done ✓
 
+- [x] Dark Mode  
 
