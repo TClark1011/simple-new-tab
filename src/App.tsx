@@ -16,8 +16,21 @@ import dayjs from "dayjs";
 
 const preloadedData = wallpaperStore.get();
 
+const createClockSignal = () => {
+	const [getDate, setDate] = createSignal(dayjs());
+
+	onMount(() => {
+		setInterval(() => {
+			setDate(dayjs());
+		}, 1000);
+	});
+
+	return getDate;
+};
+
 const App: Component = () => {
-	const [date, setDate] = createSignal(dayjs());
+	const date = createClockSignal();
+
 	const [fetchedData] = createResource("data", fetchData);
 	const data = createMemo(() => preloadedData ?? fetchedData());
 
@@ -29,10 +42,6 @@ const App: Component = () => {
 			? assignInlineVars(primaryColorVars, colorPalette() as never)
 			: {},
 	);
-
-	onMount(() => {
-		setInterval(() => setDate(dayjs()), 1000);
-	});
 
 	return (
 		<div class={clsx(themeClass, styles.root)} style={themeVarStyles()}>
