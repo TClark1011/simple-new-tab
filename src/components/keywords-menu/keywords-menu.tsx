@@ -52,11 +52,22 @@ export const KeywordsMenu: Component = () => {
 					{/* Main Content Here */}
 					{(keywords) => (
 						<>
+							{/* <h1 class={styles.header}>Settings</h1> */}
+							<h2 class={styles.subHeader}>
+								<span>Keywords</span>
+							</h2>
+							<p class={styles.description}>
+								Your keywords are used to select random wallpapers that match
+								your interests.
+							</p>
 							<ul class={styles.activeItemList}>
 								<For each={keywords} fallback={<div>No Keywords</div>}>
 									{(word) => (
 										<li
-											class={clsx("chip small round", styles.chip)}
+											class={clsx(
+												"chip small border round primary-border primary-text",
+												styles.chip,
+											)}
 											tabIndex={0}
 											onClick={[handleDeleteKeyword, word]}
 										>

@@ -1,4 +1,5 @@
 import { createTheme, createThemeContract } from "@vanilla-extract/css";
+import { globalVar } from "./styleUtils";
 
 export const primaryColorVars = createThemeContract({
 	50: null,
@@ -28,7 +29,10 @@ export const [themeClass, themeVars] = createTheme({
 			"800": "#1E2229",
 			"900": "#060708",
 		},
-		uiSurface: "#202123",
+		ui: {
+			surface: globalVar("surface"),
+			text: globalVar("on-surface"),
+		},
 	},
 	spacing: {
 		xs: "4px",

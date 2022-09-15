@@ -1,6 +1,5 @@
 /* @refresh reload */
-import { render } from "solid-js/web";
 import App from "./App";
-import "modern-normalize";
+import { renderPage } from "./render-page";
 
-render(() => <App />, document.getElementById("root") as HTMLElement);
+renderPage(App);

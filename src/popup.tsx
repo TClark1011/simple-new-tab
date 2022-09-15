@@ -1,6 +1,6 @@
 import "modern-normalize";
 import { render } from "solid-js/web";
 import { KeywordsMenu } from "./components/keywords-menu";
-import "beercss";
+import { renderPage } from "./render-page";
 
-render(() => <KeywordsMenu />, document.getElementById("root") as HTMLElement);
+renderPage(KeywordsMenu);
