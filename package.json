@@ -6,13 +6,15 @@
 		"start": "vite",
 		"dev": "vite",
 		"build": "vite build",
-		"serve": "vite preview"
+		"serve": "vite preview",
+		"postinstall": "patch-package --use-yarn"
 	},
 	"license": "MIT",
 	"devDependencies": {
 		"@crxjs/vite-plugin": "^1.0.14",
 		"@types/chrome": "^0.0.196",
 		"@vanilla-extract/vite-plugin": "^3.5.0",
+		"patch-package": "^6.4.7",
 		"typescript": "^4.8.2",
 		"vite": "^3.0.9",
 		"vite-plugin-replace": "^0.1.1",
