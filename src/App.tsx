@@ -45,12 +45,7 @@ const App: Component = () => {
 
 	return (
 		<div class={clsx(themeClass, styles.root)} style={themeVarStyles()}>
-			<img
-				src={`${data()?.backgroundImageURL}?h=${screen.height}&w=${
-					screen.width
-				}`}
-				class={styles.bgImage}
-			/>
+			<img src={data()?.backgroundImageURL} class={styles.bgImage} />
 			<svg
 				viewBox="0 0 100 100"
 				preserveAspectRatio="none"
