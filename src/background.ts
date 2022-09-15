@@ -1,8 +1,7 @@
-import { fetchData } from "./fetch-data";
+import { applyDefaultSettings } from "./stores/settings-store";
 
-// chrome.runtime.onInstalled.addListener(async () => {
-// 	console.log("installed");
-// 	await fetchData().then((d) => {
-// 		console.log(`Fetched Data: `, d);
-// 	});
-// });
+chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+	if (reason === "install") {
+		applyDefaultSettings();
+	}
+});

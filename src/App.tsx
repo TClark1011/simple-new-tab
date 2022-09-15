@@ -6,8 +6,7 @@ import {
 	createMemo,
 } from "solid-js";
 import * as styles from "./app.css";
-
-import { store } from "./store";
+import { wallpaperStore } from "./stores/wallpaper-store";
 import { fetchData } from "./fetch-data";
 import { generatePalette } from "palette-by-numbers";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
@@ -15,7 +14,7 @@ import { primaryColorVars, themeClass } from "./styles/theme.css";
 import clsx from "clsx";
 import dayjs from "dayjs";
 
-const preloadedData = store.get();
+const preloadedData = wallpaperStore.get();
 
 const App: Component = () => {
 	const [date, setDate] = createSignal(dayjs());

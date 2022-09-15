@@ -5,10 +5,15 @@ import manifest from "./manifest.json";
 import { replaceCodePlugin } from "vite-plugin-replace";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	plugins: [
 		solidPlugin(),
-		crx({ manifest }),
+		crx({
+			manifest:
+				mode === "development"
+					? { ...manifest, name: `${manifest.name} (__DEV__)` }
+					: manifest,
+		}),
 		replaceCodePlugin({
 			replacements: [
 				{
@@ -28,5 +33,6 @@ export default defineConfig({
 	},
 	build: {
 		target: "esnext",
+		outDir: mode === "development" ? "compiled" : "dist",
 	},
-});
+}));
