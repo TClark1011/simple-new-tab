@@ -17,6 +17,7 @@
 		"@commitlint/cli": "^17.1.2",
 		"@commitlint/config-conventional": "^17.1.0",
 		"@crxjs/vite-plugin": "^1.0.14",
+		"@semantic-release/git": "^10.0.1",
 		"@types/chrome": "^0.0.196",
 		"@vanilla-extract/vite-plugin": "^3.5.0",
 		"commitizen": "^4.2.5",
@@ -24,11 +25,11 @@
 		"git-cz": "^4.9.0",
 		"husky": "^8.0.0",
 		"patch-package": "^6.4.7",
+		"semantic-release": "^19.0.5",
 		"typescript": "^4.8.2",
 		"vite": "^3.0.9",
 		"vite-plugin-replace": "^0.1.1",
-		"vite-plugin-solid": "^2.3.0",
-		"semantic-release": "^19.0.5"
+		"vite-plugin-solid": "^2.3.0"
 	},
 	"dependencies": {
 		"@extend-chrome/storage": "^1.5.0",
