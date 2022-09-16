@@ -7,10 +7,10 @@ Project Description
 ### Todo
 
 - [ ] Repo README  
-- [ ] Automate versioning (Manifest must get auto updated)  
 
 ### In Progress
 
+- [ ] Automate versioning (Manifest must get auto updated)  
 
 ### Done ✓
 
