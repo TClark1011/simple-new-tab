@@ -6,9 +6,8 @@ Project Description
 
 ### Todo
 
-- [ ] Extension Icon  
 - [ ] Repo README  
-- [ ] Automate versioning  
+- [ ] Automate versioning (Manifest must get auto updated)  
 
 ### In Progress
 
@@ -16,4 +15,5 @@ Project Description
 ### Done ✓
 
 - [x] Dark Mode  
+- [x] Extension Icon  
 

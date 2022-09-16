@@ -1,6 +1,6 @@
 {
 	"manifest_version": 3,
-	"name": "simple new tab",
+	"name": "Simple New Tab",
 	"version": "1.0.0",
 	"action": {
 		"default_popup": "popup.html"
@@ -10,6 +10,9 @@
 	},
 	"background": {
 		"service_worker": "src/background.ts"
+	},
+	"icons": {
+		"128": "src/assets/icon.png"
 	},
 	"permissions": ["storage"]
 }
