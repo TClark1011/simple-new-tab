@@ -5,6 +5,10 @@
 		{
 			"fileMatch": ["/manifest.json"],
 			"url": "http://json.schemastore.org/chrome-manifest"
+		},
+		{
+			"fileMatch": ["/.releaserc.json"],
+			"url": "https://json.schemastore.org/semantic-release.json"
 		}
 	]
 }
