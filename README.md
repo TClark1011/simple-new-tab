@@ -1,4 +1,4 @@
-Simple new tab page
+# Simple new tab page
 
 ## ENV
 
