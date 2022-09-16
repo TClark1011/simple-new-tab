@@ -19,5 +19,7 @@ jobs:
         run: yarn install --freeze-lockfile
 
       - name: Release
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: yarn release
 
