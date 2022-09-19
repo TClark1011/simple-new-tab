@@ -5,7 +5,8 @@
 	"scripts": {
 		"start": "vite",
 		"dev": "vite",
-		"build": "vite build",
+		"build": "vite build && yarn build:zip",
+		"build:zip": "bestzip dist/bundle.zip dist/*",
 		"serve": "vite preview",
 		"postinstall": "patch-package --use-yarn",
 		"commit": "cz",
@@ -21,6 +22,7 @@
 		"@semantic-release/git": "^10.0.1",
 		"@types/chrome": "^0.0.196",
 		"@vanilla-extract/vite-plugin": "^3.5.0",
+		"bestzip": "^2.2.1",
 		"commitizen": "^4.2.5",
 		"cz-conventional-changelog": "3.3.0",
 		"git-cz": "^4.9.0",
