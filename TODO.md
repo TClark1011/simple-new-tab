@@ -10,10 +10,10 @@ Project Description
 
 ### In Progress
 
-- [ ] Automate versioning (Manifest must get auto updated)  
 
 ### Done ✓
 
 - [x] Dark Mode  
 - [x] Extension Icon  
+- [x] Automate versioning (Manifest must get auto updated)  
 

@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import { crx } from "@crxjs/vite-plugin";
-import manifest from "./manifest.json";
+import manifest from "./src/manifest";
 import { replaceCodePlugin } from "vite-plugin-replace";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
@@ -9,10 +9,7 @@ export default defineConfig(({ mode }) => ({
 	plugins: [
 		solidPlugin(),
 		crx({
-			manifest:
-				mode === "development"
-					? { ...manifest, name: `${manifest.name} (__DEV__)` }
-					: manifest,
+			manifest,
 		}),
 		replaceCodePlugin({
 			replacements: [
