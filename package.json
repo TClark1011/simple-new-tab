@@ -11,7 +11,8 @@
 		"postinstall": "patch-package --use-yarn",
 		"commit": "cz",
 		"prepare": "husky install",
-		"release": "semantic-release"
+		"release": "semantic-release",
+		"prepublishOnly": "yarn build"
 	},
 	"license": "MIT",
 	"devDependencies": {
