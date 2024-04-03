@@ -12,7 +12,7 @@
 		"commit": "cz",
 		"prepare": "husky install",
 		"release": "semantic-release",
-		"prepublishOnly": "yarn build"
+		"postversion": "yarn build"
 	},
 	"license": "MIT",
 	"devDependencies": {

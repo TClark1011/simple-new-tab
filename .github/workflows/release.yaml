@@ -6,6 +6,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      VITE_API_KEY: ${{ secrets.PEXELS_API_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
