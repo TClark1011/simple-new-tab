@@ -1,5 +1,10 @@
 # Simple new tab page
 
-## ENV
+## Development
 
-Add `VITE_API_KEY` variable to `.env` containing the pexels API key
+1. Add `VITE_API_KEY` variable to `.env` containing the pexels API key
+2. Run with `yarn dev`
+3. In your browser, go to `chrome://extensions`
+4. Drag the `compiled` folder from into the browser window
+
+You should now have the dev version of the extension installed in your browser
