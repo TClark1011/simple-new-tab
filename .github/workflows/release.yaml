@@ -18,9 +18,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --freeze-lockfile
 
-      - name: Build
-        run: yarn build
-
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
