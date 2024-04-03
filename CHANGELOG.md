@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/TClark1011/simple-new-tab/compare/v1.2.0...v1.3.0) (2024-04-03)
+
+
+### Features
+
+* 🎸 after deleting keyword focus adjacent keyword in list ([d34d338](https://github.com/TClark1011/simple-new-tab/commit/d34d338d207c12a2128417390c15aab2646690aa))
+
 # [1.2.0](https://github.com/TClark1011/simple-new-tab/compare/v1.1.0...v1.2.0) (2024-04-03)
 
 
