@@ -1,7 +1,5 @@
-// Set the color variables for beercss according to color
-// scheme. Also override some styles.
-
-
+/* Set the color variables for beercss according to color
+  scheme. Also override some styles. */
 
 #root {
 	--primary: #2196f3;
@@ -49,7 +47,7 @@
 
 @media (prefers-color-scheme: dark) {
 	#root {
-		--primary: #8AB4F8;
+		--primary: #8ab4f8;
 		--on-primary: #202123;
 		--primary-container: #5785c5;
 		--on-primary-container: #bde6ff;
@@ -68,7 +66,7 @@
 		--background: #1c1b1f;
 		--on-background: #e6e1e5;
 		--surface: #202123;
-		--on-surface: #E1E2E6;
+		--on-surface: #e1e2e6;
 		--surface-variant: #49454f;
 		--on-surface-variant: #cac4d0;
 		--inverse-surface: #e6e1e5;

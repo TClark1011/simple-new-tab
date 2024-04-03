@@ -1,8 +1,6 @@
-import { F, flow, G, pipe } from "@mobily/ts-belt";
 import clsx from "clsx";
 import {
 	Component,
-	createEffect,
 	createResource,
 	createSignal,
 	For,
@@ -16,16 +14,14 @@ import {
 	deleteKeyword,
 	postNewKeyword,
 	safeGetSettings,
-	settingsStore,
 } from "../../stores/settings-store";
 import { themeClass } from "../../styles/theme.css";
 import { runIfParamIsDefined } from "../../utils";
 import * as styles from "./keywords-menu.css";
 
-settingsStore.get().then((data) => console.log("(keywords-menu) data: ", data));
-
 export const KeywordsMenu: Component = () => {
 	let inputElement: HTMLInputElement | undefined;
+	let keywordTagsContainerElement: HTMLDivElement | undefined;
 
 	const [getSettingsResult, { mutate }] = createResource(safeGetSettings);
 	const [inputState, setInputState] = createSignal("");
@@ -38,8 +34,23 @@ export const KeywordsMenu: Component = () => {
 	};
 
 	const handleDeleteKeyword = async (keyword: string) => {
+		const indexOfDeletedWord =
+			getSettingsResult()?.keywords.indexOf(keyword) ?? -1;
+
 		mutate(runIfParamIsDefined(applyKeywordDelete(keyword))); //Re-fetch wallpaper to use next time
+
 		deleteKeyword(keyword).then(fetchData);
+
+		const childToFocus = keywordTagsContainerElement?.children[
+			indexOfDeletedWord
+		] as HTMLButtonElement | undefined;
+
+		if (!childToFocus) {
+			inputElement?.focus();
+			return;
+		}
+
+		childToFocus.focus();
 	};
 
 	return (
@@ -52,10 +63,8 @@ export const KeywordsMenu: Component = () => {
 					<div>Error loading settings</div>
 				</Match>
 				<Match keyed when={getSettingsResult()?.keywords}>
-					{/* Main Content Here */}
 					{(keywords) => (
 						<>
-							{/* <h1 class={styles.header}>Settings</h1> */}
 							<h2 class={styles.subHeader}>
 								<span>Keywords</span>
 							</h2>
@@ -63,10 +72,13 @@ export const KeywordsMenu: Component = () => {
 								Your keywords are used to select random wallpapers that match
 								your interests.
 							</p>
-							<ul class={styles.activeItemList}>
+							<div
+								class={styles.activeItemList}
+								ref={keywordTagsContainerElement}
+							>
 								<For each={keywords} fallback={<div>No Keywords</div>}>
 									{(word) => (
-										<li
+										<button
 											class={clsx(
 												"chip small border round primary-border primary-text",
 												styles.chip,
@@ -74,12 +86,12 @@ export const KeywordsMenu: Component = () => {
 											tabIndex={0}
 											onClick={[handleDeleteKeyword, word]}
 										>
-											<span>{word}</span>
 											<i class="small">close</i>
-										</li>
+											<span>{word}</span>
+										</button>
 									)}
 								</For>
-							</ul>
+							</div>
 							<form class={styles.inputRow} onSubmit={handleAddKeyword}>
 								<div
 									class={clsx(
