@@ -25,6 +25,8 @@ import * as styles from "./keywords-menu.css";
 settingsStore.get().then((data) => console.log("(keywords-menu) data: ", data));
 
 export const KeywordsMenu: Component = () => {
+	let inputElement: HTMLInputElement | undefined;
+
 	const [getSettingsResult, { mutate }] = createResource(safeGetSettings);
 	const [inputState, setInputState] = createSignal("");
 
@@ -32,6 +34,7 @@ export const KeywordsMenu: Component = () => {
 		mutate(runIfParamIsDefined(applyAddKeyword(inputState())));
 		postNewKeyword(inputState()).then(fetchData); // Re-fetch wallpaper to use next time
 		setInputState("");
+		inputElement?.focus();
 	};
 
 	const handleDeleteKeyword = async (keyword: string) => {
@@ -88,6 +91,7 @@ export const KeywordsMenu: Component = () => {
 										type="text"
 										onInput={(e) => setInputState(e.currentTarget.value ?? "")}
 										value={inputState()}
+										ref={inputElement}
 									></input>
 									<label>Add Keyword</label>
 								</div>

@@ -3,7 +3,17 @@
 	"plugins": [
 		"@semantic-release/commit-analyzer",
 		"@semantic-release/release-notes-generator",
-		"@semantic-release/github",
+		[
+			"@semantic-release/github",
+			{
+				"assets": [
+					{
+						"path": "dist/bundle.zip",
+						"label": "Release ${nextRelease.version}"
+					}
+				]
+			}
+		],
 		"@semantic-release/changelog",
 		[
 			"@semantic-release/npm",
