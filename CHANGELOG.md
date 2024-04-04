@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/TClark1011/simple-new-tab/compare/v1.3.0...v1.4.0) (2024-04-04)
+
+
+### Features
+
+* 🎸 set desired resolution for wallpapers ([31638ff](https://github.com/TClark1011/simple-new-tab/commit/31638ffa39aba594e80670f54480b3e9e0bac15d))
+
 # [1.3.0](https://github.com/TClark1011/simple-new-tab/compare/v1.2.0...v1.3.0) (2024-04-03)
 
 
