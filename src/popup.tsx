@@ -1,6 +1,5 @@
 import "modern-normalize";
-import { render } from "solid-js/web";
-import { KeywordsMenu } from "./components/keywords-menu";
+import { OptionsMenu } from "./components/options-menu";
 import { renderPage } from "./render-page";
 
-renderPage(KeywordsMenu);
+renderPage(OptionsMenu);

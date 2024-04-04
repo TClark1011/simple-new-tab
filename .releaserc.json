@@ -9,6 +9,7 @@
 				"assets": [
 					{
 						"path": "dist/bundle.zip",
+						"name": "simple-new-tab-v${nextRelease.version}.zip",
 						"label": "Release ${nextRelease.version}"
 					}
 				]

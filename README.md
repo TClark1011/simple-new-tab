@@ -9,6 +9,8 @@
 
 You should now have the dev version of the extension installed in your browser
 
+**Hot Reload:** Hot reload will work, however it will also cause the extensions popup menu to close due to chrome's behaviour. To fix this, just open the popup, then right click in it and press inspect. As long as the inspect window is open, the popup will not close.
+
 ## Pushing Changes
 
 1. Generate a new fine-grained github token with "read and write" Content permission on this repo

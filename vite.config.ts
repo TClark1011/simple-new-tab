@@ -21,6 +21,12 @@ export default defineConfig(({ mode }) => ({
 					from: `require("isomorphic-fetch");`,
 					to: `import "isomorphic-fetch";`,
 				},
+				{
+					// Not sure why, but this is required to get zod to work,
+					// otherwise it throws an error
+					from: `const {}Error`,
+					to: `const Error`,
+				},
 			],
 		}),
 		vanillaExtractPlugin(),

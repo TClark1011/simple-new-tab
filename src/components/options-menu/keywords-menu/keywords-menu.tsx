@@ -7,37 +7,36 @@ import {
 	Match,
 	Switch,
 } from "solid-js";
-import { fetchData } from "../../fetch-data";
+import { fetchData } from "../../../fetch-data";
 import {
-	applyAddKeyword,
-	applyKeywordDelete,
+	composeAddKeywordUpdater,
+	composeDeleteKeywordUpdater,
 	deleteKeyword,
 	postNewKeyword,
-	safeGetSettings,
-} from "../../stores/settings-store";
-import { themeClass } from "../../styles/theme.css";
-import { runIfParamIsDefined } from "../../utils";
+	getSettings,
+} from "../../../stores/settings-store";
+import { runIfParamIsDefined } from "../../../utils";
 import * as styles from "./keywords-menu.css";
+import * as sharedStyles from "../options-menu.css";
 
 export const KeywordsMenu: Component = () => {
 	let inputElement: HTMLInputElement | undefined;
 	let keywordTagsContainerElement: HTMLDivElement | undefined;
 
-	const [getSettingsResult, { mutate }] = createResource(safeGetSettings);
+	const [settings, { mutate }] = createResource(getSettings);
 	const [inputState, setInputState] = createSignal("");
 
 	const handleAddKeyword = async () => {
-		mutate(runIfParamIsDefined(applyAddKeyword(inputState())));
+		mutate(runIfParamIsDefined(composeAddKeywordUpdater(inputState())));
 		postNewKeyword(inputState()).then(fetchData); // Re-fetch wallpaper to use next time
 		setInputState("");
 		inputElement?.focus();
 	};
 
 	const handleDeleteKeyword = async (keyword: string) => {
-		const indexOfDeletedWord =
-			getSettingsResult()?.keywords.indexOf(keyword) ?? -1;
+		const indexOfDeletedWord = settings()?.keywords.indexOf(keyword) ?? -1;
 
-		mutate(runIfParamIsDefined(applyKeywordDelete(keyword))); //Re-fetch wallpaper to use next time
+		mutate(runIfParamIsDefined(composeDeleteKeywordUpdater(keyword))); //Re-fetch wallpaper to use next time
 
 		deleteKeyword(keyword).then(fetchData);
 
@@ -54,24 +53,39 @@ export const KeywordsMenu: Component = () => {
 	};
 
 	return (
-		<div class={clsx(themeClass, styles.root, "dark")}>
+		<div class={styles.root}>
 			<Switch>
-				<Match when={getSettingsResult.loading}>
+				<Match when={settings.loading}>
 					<div>Loading...</div>
 				</Match>
-				<Match when={getSettingsResult.error}>
+				<Match when={settings.error}>
 					<div>Error loading settings</div>
 				</Match>
-				<Match keyed when={getSettingsResult()?.keywords}>
+				<Match keyed when={settings()?.keywords}>
 					{(keywords) => (
 						<>
-							<h2 class={styles.subHeader}>
-								<span>Keywords</span>
-							</h2>
+							<h2 class={sharedStyles.optionsHeader}>Keywords</h2>
 							<p class={styles.description}>
 								Your keywords are used to select random wallpapers that match
 								your interests.
 							</p>
+							<form class={styles.inputRow} onSubmit={handleAddKeyword}>
+								<div
+									class={clsx(
+										"field label border small",
+										styles.newKeywordInput,
+									)}
+								>
+									<input
+										type="text"
+										onInput={(e) => setInputState(e.currentTarget.value ?? "")}
+										value={inputState()}
+										ref={inputElement}
+									></input>
+									<label>Add Keyword</label>
+								</div>
+								<button type="submit">Add</button>
+							</form>
 							<div
 								class={styles.activeItemList}
 								ref={keywordTagsContainerElement}
@@ -92,23 +106,6 @@ export const KeywordsMenu: Component = () => {
 									)}
 								</For>
 							</div>
-							<form class={styles.inputRow} onSubmit={handleAddKeyword}>
-								<div
-									class={clsx(
-										"field label border small",
-										styles.newKeywordInput,
-									)}
-								>
-									<input
-										type="text"
-										onInput={(e) => setInputState(e.currentTarget.value ?? "")}
-										value={inputState()}
-										ref={inputElement}
-									></input>
-									<label>Add Keyword</label>
-								</div>
-								<button type="submit">Add</button>
-							</form>
 						</>
 					)}
 				</Match>
