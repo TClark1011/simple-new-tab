@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/TClark1011/simple-new-tab/compare/v1.4.0...v1.4.1) (2024-04-05)
+
+
+### Bug Fixes
+
+* 🐛 divider in options menu is full width ([a291305](https://github.com/TClark1011/simple-new-tab/commit/a2913056a7c0cc0fff073594a54ab2512a4f831d))
+
 # [1.4.0](https://github.com/TClark1011/simple-new-tab/compare/v1.3.0...v1.4.0) (2024-04-04)
 
 
