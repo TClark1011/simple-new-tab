@@ -1,4 +1,4 @@
-import { createTheme, createThemeContract } from "@vanilla-extract/css";
+import { createTheme, createThemeContract, style } from "@vanilla-extract/css";
 import { globalVar } from "./styleUtils";
 
 export const primaryColorVars = createThemeContract({
@@ -12,6 +12,19 @@ export const primaryColorVars = createThemeContract({
 	700: null,
 	800: null,
 	900: null,
+});
+
+const greyColorVars = createThemeContract({
+	"50": "#CCD2DA",
+	"100": "#C0C8D2",
+	"200": "#A9B3C1",
+	"300": "#919EB0",
+	"400": "#79899F",
+	"500": "#64748B",
+	"600": "#4D596A",
+	"700": "#353E4A",
+	"800": "#1E2229",
+	"900": "#060708",
 });
 
 export const [themeClass, themeVars] = createTheme({
@@ -32,6 +45,7 @@ export const [themeClass, themeVars] = createTheme({
 		ui: {
 			surface: globalVar("surface"),
 			text: globalVar("on-surface"),
+			outline: globalVar("outline"),
 		},
 	},
 	spacing: {
@@ -44,4 +58,9 @@ export const [themeClass, themeVars] = createTheme({
 	font: {
 		heading: '"Bebas Neue", sans-serif',
 	},
+});
+
+export const bodyClass = style({
+	backgroundColor: themeVars.colors.ui.surface,
+	color: themeVars.colors.ui.text,
 });

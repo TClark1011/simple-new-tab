@@ -9,7 +9,7 @@ export const OptionsMenu: Component = () => {
 	return (
 		<div class={clsx(themeClass, styles.root, "dark")}>
 			<KeywordsMenu />
-			<div class="large-divider" />
+			<div class={styles.divider} />
 			<ResolutionMenu />
 		</div>
 	);
